@@ -39,17 +39,20 @@ class Min_Heap{
                         Swap(Heap[SecondChildExit(index)],Heap[index]);
                         Update_VertexAndIndex(SecondChildExit(index),index);
                         index = SecondChildExit(index);
+                        return;
                 }
-                else if((FirstChildExit(index)&& (SecondChildExit(index) == -1)) && Heap[FirstChildExit(index)].second  < Heap[index].second ){
+                else if(FirstChildExit(index)&& (SecondChildExit(index) == -1) && Heap[FirstChildExit(index)].second  < Heap[index].second ){
                         Swap(Heap[FirstChildExit(index)],Heap[index]);
                         Update_VertexAndIndex(FirstChildExit(index),index);
                         index = FirstChildExit(index);
+                        return;
                 }
                 else{
                         if((Heap[FirstChildExit(index)].second  > Heap[SecondChildExit(index)].second ) &&  Heap[SecondChildExit(index)].second  < Heap[index].second ){
                                 Swap(Heap[SecondChildExit(index)],Heap[index]);
                                 Update_VertexAndIndex(SecondChildExit(index),index);
                                 index = SecondChildExit(index);
+                                return;
                         }
                         else if((Heap[FirstChildExit(index)].second  < Heap[SecondChildExit(index)].second ) &&  Heap[FirstChildExit(index)].second  < Heap[index].second ){
                                 Swap(Heap[FirstChildExit(index)],Heap[index]);
