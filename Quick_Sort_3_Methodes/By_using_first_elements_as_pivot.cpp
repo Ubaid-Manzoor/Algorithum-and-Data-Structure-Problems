@@ -35,12 +35,12 @@ void Print_Array_and_Comparisons(){
     for(it = Array.begin() ; it != Array.end() ; it++){
         cout<<it->value<<endl;
     }
-    cout<<"Comparisons == "<<Number_of_Comparisons;
+    cout<<"Comparisons == "<<Number_of_Comparisons<<endl;
 }
 void Helper_Quick_Sort(vector<Number> &arr,int l_index ,int r_index){
     int lenght = r_index-l_index;
     Number_of_Comparisons += lenght - 1;
-    if(lenght <=1){
+    if(lenght <=0){
         return;
     }
     int pivot = arr[l_index].value;
