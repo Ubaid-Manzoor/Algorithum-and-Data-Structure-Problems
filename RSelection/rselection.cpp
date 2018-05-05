@@ -58,15 +58,12 @@ int Helper_RSelection(vector<Number> &arr,int l_index ,int r_index,int ith_eleme
     arr[l_index].value = arr[i-1].value;
     arr[i-1].value = pivot;
     if(ith_element == i-1){
-    cout<<"pivot =="<<pivot<<endl;
         return pivot;
     }
     else if(ith_element < i-1){
-    cout<<"pivot == l "<<pivot<<"  "<<i-1<<endl;
         Helper_RSelection(arr,l_index,i-2,ith_element); // go to left part
     }
     else{
-    cout<<"pivot == r "<<pivot<<"  "<<i-1<<endl;
         Helper_RSelection(arr,i,r_index,ith_element); // go to right part
     }
 }
