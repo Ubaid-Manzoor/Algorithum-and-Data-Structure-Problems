@@ -89,20 +89,19 @@ void markallVerticesUnvisited(){
 void DFS(int CurrentVertex){
     vector<int>& CurrentVerticies = Graph[CurrentVertex];
     vector<int>::iterator it;
+    marked[CurrentVertex] = true;
     for(it = CurrentVerticies.begin() ; it != CurrentVerticies.end() ; it++){
       if(marked[*it] == false){
         DFS(*it);
       }
     }
     Topological_ordering.push_back(CurrentVertex);
-    marked[CurrentVertex] = true;
 }
 void GiveTopologicalOdering(){
     markallVerticesUnvisited();
     unordered_map<int,vector<int> >::iterator it;
     for(it = Graph.begin() ; it != Graph.end() ; it++){
       if(marked[it->first] == false){
-        cout<<"->"<<it->first<<endl;
          DFS(it->first);
       }
     }
