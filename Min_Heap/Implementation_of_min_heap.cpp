@@ -1,17 +1,25 @@
 #include<iostream>
 #include<vector>
 using namespace std;
-class Min_Heap{
+class MinHeap{
+
+
 private:
     vector<int> Heap;
 bool hasParent(int index){
     return (ParentIndex(index) < 0) ? false : true;
 }
-int FirstChildExit(int Parentindex){
-    return ( (Parentindex*2 + 1) < Heap.size())?  (Parentindex*2 + 1) : -1;
+bool FirstChildExit(int Parentindex){
+    return ( (Parentindex*2 + 1) < Heap.size()) ?  true : false;
 }
-int SecondChildExit(int Parentindex){
-   return ( (Parentindex*2 + 2) < Heap.size())?  (Parentindex*2 + 2) : -1;
+bool SecondChildExit(int Parentindex){
+   return ( (Parentindex*2 + 2) < Heap.size())?  true : false;
+}
+int FirstChildindex(int Parentindex){
+    return Parentindex*2 + 1;
+}
+int SecondChildindex(int Parentindex){
+   return Parentindex*2 + 2;
 }
 int ParentIndex(int index){
     return (index-1)/2;
@@ -28,60 +36,58 @@ void HeapifyUp(){
 }
 void HeapifyDown(){
     int index = 0;
-    while(FirstChildExit(index) || SecondChildExit(index)){
-        if((SecondChildExit(index) && FirstChildExit(index)) == -1 && Heap[SecondChildExit(index)] < Heap[index]){
-                Swap(Heap[SecondChildExit(index)],Heap[index]);
-                index = SecondChildExit(index);
-                return;
-        }
-        else if(FirstChildExit(index)&& (SecondChildExit(index) == -1) && Heap[FirstChildExit(index)] < Heap[index]){
-                Swap(Heap[FirstChildExit(index)],Heap[index]);
-                index = FirstChildExit(index);
-                return;
-        }
-        else{
-                if((Heap[FirstChildExit(index)] > Heap[SecondChildExit(index)]) &&  Heap[SecondChildExit(index)] < Heap[index]){
-                        Swap(Heap[SecondChildExit(index)],Heap[index]);
-                        index = SecondChildExit(index);
-                        return;
-                }
-                else if((Heap[FirstChildExit(index)] < Heap[SecondChildExit(index)]) &&  Heap[FirstChildExit(index)] < Heap[index]){
-                        Swap(Heap[FirstChildExit(index)],Heap[index]);
-                        index = FirstChildExit(index);
-                }
-        }
+    while(FirstChildExit(index)){
+      int SmallChildIndex = FirstChildindex(index);
+      if(Heap[SecondChildindex(index)] < Heap[FirstChildindex(index)]){
+        SmallChildIndex = SecondChildindex(index);
+      }
+      if(Heap[index] < Heap[SmallChildIndex]){
+        break;
+      }else{
+        Swap(Heap[SmallChildIndex],Heap[index]);
+      }
+      index = SmallChildIndex;
     }
 }
+
+
 public:
     void insert(int value){
         Heap.push_back(value);
         HeapifyUp();
     }
     int get_min(){
+      if(isempty()){
+        cout<<endl<<"Heap is empty->";
+        return 0;
+      }
         int Min = Heap[0];
         Heap[0] = Heap[Heap.size() - 1];
         Heap.pop_back();
         HeapifyDown();
         return Min;
     }
-    void Print_Heap(){
-    vector<int>::iterator it;
-    for(it = Heap.begin() ; it != Heap.end() ; it++){
-        cout<<*it<<" ";
+    void Print(){
+        vector<int>::iterator it;
+        for(it = Heap.begin() ; it != Heap.end() ; it++){
+            cout<<*it<<" ";
+        }
+        cout<<endl;
     }
-    cout<<endl;
-}
+    bool isempty(){
+      return Heap.empty();
+    }
 };
 int main(){
-    Min_Heap heap;
+    MinHeap heap;
     heap.insert(3);
     heap.insert(2);
     heap.insert(6);
     heap.insert(100);
     heap.insert(1);
     heap.insert(0);
-    heap.Print_Heap();
+    heap.Print();
    int min  =  heap.get_min();
-   heap.Print_Heap();
+   heap.Print();
    cout<<min;
 }

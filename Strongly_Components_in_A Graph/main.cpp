@@ -25,10 +25,10 @@ private:
                   vector<int>& X = Graph[scr];
                   X.push_back(des);
               }
-              // if(Graph.find(des) == Graph.end()){
-              //   vector<int> Temp1;
-              //   Graph[des] = Temp1;
-              // }
+              if(Graph.find(des) == Graph.end()){
+                vector<int> Temp1;
+                Graph[des] = Temp1;
+              }
           // Reverse Graph
             if(ReverseGraph.find(des) == ReverseGraph.end()){
                  vector<int> Temp1;
@@ -39,10 +39,10 @@ private:
                   vector<int>& X = ReverseGraph[des];
                   X.push_back(scr);
               }
-              // if(ReverseGraph.find(scr) == ReverseGraph.end()){
-              //   vector<int> Temp1;
-              //   ReverseGraph[scr] = Temp1;
-              // }
+              if(ReverseGraph.find(scr) == ReverseGraph.end()){
+                vector<int> Temp1;
+                ReverseGraph[scr] = Temp1;
+              }
           }
 public:
   void ReadFile(){
