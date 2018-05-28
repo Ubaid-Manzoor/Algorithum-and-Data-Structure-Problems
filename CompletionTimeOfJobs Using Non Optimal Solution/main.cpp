@@ -58,12 +58,12 @@ public:
     //     }
     // cout<<"*********************************************************************";
     // }
-    void Print_Array(){
-        vector<Job>::iterator it;
-        for(it  = Array.begin() ; it != Array.end() ; it++){
-            cout<<it->Weight<<"  "<<it->Lenght<<"-->"<<it->DifferenceOfWeightAndLenght<<endl;
-        }
-    }
+    // void Print_Array(){
+    //     vector<Job>::iterator it;
+    //     for(it  = Array.begin() ; it != Array.end() ; it++){
+    //         cout<<it->Weight<<"  "<<it->Lenght<<"-->"<<it->DifferenceOfWeightAndLenght<<endl;
+    //     }
+    // }
       Job CreateJob(int job_weight,int job_lenght){
       Job Temp;
       Temp.Weight = job_weight;
@@ -85,10 +85,19 @@ public:
         input.close();
         cout<<NumberOfJobs;
     }
+    void ComputeTimeOfCompelition(){
+      int TotalTime = 0;
+      vector<Job>::iterator it;
+      for(it = Array.begin() ; it != Array.end() ; it++){
+        TotalTime = TotalTime + it->Lenght*it->Weight;
+      }
+      cout<<TotalTime;
+    }
 };
 int main(){
     Set_of_Jobs arr;
     arr.Read_Jobs();
     arr.Sort();
-    arr.Print_Array();
+    // arr.Print_Array();
+    arr.ComputeTimeOfCompelition();
 }
