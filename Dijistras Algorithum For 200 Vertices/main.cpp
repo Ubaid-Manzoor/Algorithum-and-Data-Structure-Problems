@@ -70,21 +70,19 @@ void Print_Vertex_and_distance(){
           cout<<endl;
       }
  }
-  void print(){
-  unordered_map<int ,vector<Node> >::iterator it;
-   for(it = Graph.begin() ; it != Graph.end() ;it++){
-       cout<<it->first<<":-"<<endl;
-       for( int i = 0 ; i < it->second.size() ; i++){
-           cout<<"   "<<"("<<it->second[i].des;
-           cout<<","<<it->second[i].weight<<")";
-           if(i != it->second.size()-1)
-           cout<<",";
-       }
-       cout<<endl;
-   }
-}
-
-
+//   void print(){
+//   unordered_map<int ,vector<Node> >::iterator it;
+//    for(it = Graph.begin() ; it != Graph.end() ;it++){
+//        cout<<it->first<<":-"<<endl;
+//        for( int i = 0 ; i < it->second.size() ; i++){
+//            cout<<"   "<<"("<<it->second[i].des;
+//            cout<<","<<it->second[i].weight<<")";
+//            if(i != it->second.size()-1)
+//            cout<<",";
+//        }
+//        cout<<endl;
+//    }
+// }
 void initialize(){
   Heap.initialize(Graph);
 }
@@ -116,7 +114,7 @@ void FindPathByDijistra(int StartVertex){
         }
       }
   }
-Print_Vertex_and_distance();
+  Print_Vertex_and_distance();
 }
 
 };

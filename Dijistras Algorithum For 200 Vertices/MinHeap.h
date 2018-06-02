@@ -80,11 +80,7 @@ public:
     temp = Heap[index];
     temp.second = CurrentScore;
     Heap[index] = temp;
-
-    Swap(Heap[index],Heap[Heap.size() - 1]);
-
-    HeapifyDown(index);
-    HeapifyUp(Heap.size() - 1);
+    HeapifyUp(index);
   }
 
   int CurrenetGreedyScoreOf(int index){
@@ -122,8 +118,6 @@ public:
         Heap.push_back(temp);
         Vertex_and_Index.insert(temp1);
     }
-    // Print_VertexAndIndex();
-    // Print_Heap();
   }
   void insert(int vertex,int value){
     pair<int,int> temp;

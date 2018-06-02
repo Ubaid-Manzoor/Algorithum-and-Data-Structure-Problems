@@ -24,7 +24,6 @@ public:
             //Merge Left & Right At Each Level
             int i1 = 0;
             int i2 = 0;
-            cout<<"--->"<<Left.size();
             for(int i = 0 ; i < array.size() ; i++){
                 if(i2 >= Right.size() || (i1 < Left.size() && Left[i1].DifferenceOfWeightAndLenght < Right[i2].DifferenceOfWeightAndLenght)){
                     array[i] = Left[i1];
@@ -68,7 +67,6 @@ public:
       Job Temp;
       Temp.Weight = job_weight;
       Temp.Lenght = job_lenght;
- //     cout<<Temp.Weight<<"  "<<Temp.Lenght<<endl;
       Temp.DifferenceOfWeightAndLenght = job_weight - job_lenght;
       return Temp;
     }
@@ -83,7 +81,6 @@ public:
             Array.push_back(temp);
         }
         input.close();
-        cout<<NumberOfJobs;
     }
     void ComputeTimeOfCompelition(){
       int TotalTime = 0;
